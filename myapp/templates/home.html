@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5b7b1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mx-auto w-50 bg-secondary text-white p-3 my-3 border border-warning rounded">hello!..here our departments</h1>
+        <ul class="list-unstyled">
+            {% for department in dept %}
+            <div class="mx-auto w-50 bg-success text-white text-center p-3 my-3 border border-warning rounded">
+                <li>
+<!--                    <h1>Departments</h1>-->
+                    <br>
+                    <h2>{{ department.dep_name }}</h2>
+                    <p>{{ department.dep_description }}</p>
+                </li>
+            </div>
+            {% empty %}
+                <p>No departments found.</p>
+            {% endfor %}
+        </ul>
+
+        <form method="post" action="{% url 'user_logout' %}">
+            {% csrf_token %}
+
+                   <button type="submit"  class="btn btn-primary btn-lg btn-block" name="user_logout">Logout</button>
+    </form>
+    </div>
+
+    <!-- Optional: Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
